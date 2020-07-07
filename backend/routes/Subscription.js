@@ -9,25 +9,26 @@ www.duzeapi.com/Subscription/delete/665432098675243567  => DELETE
 www.duzeapi.com/Subscription/update/665432098675243567 => POST
 www.duzeapi.com/Subscription/add => POST
 */
-
+//works
 router.route('/').get((req, res) => {
     Subscription.find()
         .then(subscriptions => res.json(subscriptions))
         .catch(err => res.status(400).json('[ERROR] ' + err));
 });
 // fetch(duze.com/Subscriptions/delete/456765434231) => json
+//works
 router.route('/find/:id').get((req, res) => {
     Subscription.findById(req.params.id)
         .then(subscription => res.json(subscription))
         .catch(err => res.status(400).json('[ERROR] ' + err));
 });
-
+//works
 router.route('/delete/:id').delete((req, res) => {
     Subscription.findByIdAndDelete(req.params.id)
         .then(() => res.json('Subscirption deleted successfully'))
         .catch(err => res.status(400).json('[ERROR]  ' + err));
 });
-
+//works
 router.route('/update/:id').post((req, res) => {
     Subscription.findById(req.params.id)
         .then(subscription => {
@@ -47,7 +48,7 @@ router.route('/update/:id').post((req, res) => {
         })
         .catch(err => res.status(400).json('[ERROR] ' + err));
 });
-
+//works
 router.route('/add').post((req, res) => {
     const name = req.body.name;
     const category = req.body.category;
