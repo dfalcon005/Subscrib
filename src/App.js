@@ -10,8 +10,10 @@ import SubscriptionsList from "./components/subscriptionsList.component";
 function App() {
   return (
     <Router>
+      <h2>Navbar</h2>
       <div className="container">
-        <h2>Welcome to DUZE</h2>
+        <h2>MainPage</h2>
+        <h2>Details Page</h2>
       </div>
       <Route path="/view" component={SubscriptionsList} />
     </Router>
