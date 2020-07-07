@@ -6,8 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <Router>
+      <h2>Navbar</h2>
       <div className="container">
-        <h2>MERN-Stack Todo App</h2>
+        <h2>MainPage</h2>
+        <h2>Details Page</h2>
       </div>
     </Router>
   );
