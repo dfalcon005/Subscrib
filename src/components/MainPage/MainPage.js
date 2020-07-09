@@ -17,7 +17,7 @@ const mainpage = (props) => (
         <div className="col-8">
             <h3>You are currently spending <span className="informative-label">$9.99/month</span>...</h3>
             {/* place line chart here */}
-            <h1><SimpleLineChart/></h1>
+            <div><SimpleLineChart/></div>
         </div>
     </div>
 );
