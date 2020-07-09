@@ -1,7 +1,9 @@
 import React from 'react';
-import './MainPage.css'
+import './MainPage.css';
 import Subscription from './Subscription/Subscription';
 import AddButton from '../Buttons/AddButton';
+import SimpleLineChart from './LineChart/SimpleLineChart';
+
 
 const mainpage = (props) => (
     <div className="row">
@@ -15,7 +17,7 @@ const mainpage = (props) => (
         <div className="col-8">
             <h3>You are currently spending <span className="informative-label">$9.99/month</span>...</h3>
             {/* place line chart here */}
-            <h1>Line chart goes here</h1>
+            <h1><SimpleLineChart/></h1>
         </div>
     </div>
 );
