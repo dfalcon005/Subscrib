@@ -8,17 +8,21 @@ import SimpleLineChart from './LineChart/SimpleLineChart';
 const mainpage = (props) => (
     <div className="row">
         {/* subscription list */}
-        <div className="col-4">
+        <div className="col-sm-4">
             <h3>My Subscriptions:</h3>
             <Subscription/>
             <AddButton/>
         </div>
         {/* line chart */}
-        <div className="col-8">
-            <h3>You are currently spending <span className="informative-label">$9.99/month</span>...</h3>
-            {/* place line chart here */}
-            <div><SimpleLineChart/></div>
-        </div>
+        <div class="col-sm-8" id = "linechart">
+            <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">You are currently spending <span className="informative-label">$9.99/month</span>...</h3>
+                    {/* place line chart here */}
+                <div><SimpleLineChart/></div>
+                </div>
+            </div>
+            </div>
     </div>
 );
 
