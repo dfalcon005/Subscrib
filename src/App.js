@@ -8,11 +8,7 @@ import Mainpage from './components/MainPage/MainPage';
 function App() {
   return (
     <Router>
-<<<<<<< HEAD
-      <h2><Header/></h2>
-=======
       <div><Header/></div>
->>>>>>> b196a4f5735285f645a9de3fb66f964c992c9936
       <div className="container">
         <Mainpage/>
       </div>
