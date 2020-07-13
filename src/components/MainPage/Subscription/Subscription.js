@@ -5,7 +5,7 @@ const subscription = (props) => (
     <div>
         <div className="subscription">
             {/* card for subscription */}
-            <div className="card">
+            <div className="card custom-card">
 
                 {/* div for top items */}
                 <div className="d-flex justify-content-between">
