@@ -3,6 +3,9 @@ import './MainPage.css';
 import Subscription from './Subscription/Subscription';
 import AddButton from '../Buttons/AddButton';
 import SimpleLineChart from './LineChart/SimpleLineChart';
+import Modal from '../../components/DetailPage/Modal/Modal';
+import SubscriptionDetails from '../DetailPage/Modal/SubscriptionDetails/SubscriptionDetails';
+
 
 
 class mainpage extends Component{
@@ -15,10 +18,19 @@ class mainpage extends Component{
             { id: '5', name: 'Gym', price: '$35.99/month', next_pay: '8/21'},
             { id: '6', name: 'Rent', price: '$150.99/month', next_pay: '8/21'},
           ],
+          detailmode: false
+    }
+
+    detailmodeHandler = () => {
+        this.setState({detailmode: true});
+    }
+
+    detailModeCancelHandler= () => {
+        this.setState({detailmode: false})
     }
 
     render(){
-        return(
+        return( 
             <div className="row">
                 {/* subscription list */}
                 <div className="col-sm-4" id="sub-list-section">
@@ -30,11 +42,15 @@ class mainpage extends Component{
                                 key={sub.id}
                                 name={sub.name}
                                 price={sub.price}
-                                next_pay={sub.next_pay}/>
+                                next_pay={sub.next_pay}
+                                detailed={this.detailmodeHandler}/>
                         })}
                     </div>    
                     <AddButton/>
                 </div>
+                <Modal show={this.state.detailmode} modalClosed={this.detailModeCancelHandler}>
+                    <SubscriptionDetails/>
+                </Modal>
                 {/* line chart */}
                 <div className="col-sm-8" id = "linechart">
                     <div className="card">
