@@ -14,10 +14,10 @@ const mainpage = (props) => (
             <AddButton/>
         </div>
         {/* line chart */}
-        <div class="col-sm-8" id = "linechart">
-            <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">You are currently spending <span className="informative-label">$9.99/month</span>...</h3>
+        <div className="col-sm-8" id = "linechart">
+            <div className="card">
+            <div className="card-body">
+                <h3 className="card-title">You are currently spending <span className="informative-label">$9.99/month</span>...</h3>
                     {/* place line chart here */}
                 <div><SimpleLineChart/></div>
                 </div>
