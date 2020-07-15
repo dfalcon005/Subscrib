@@ -8,7 +8,7 @@ const Graph = ( props ) => {
 
       return ( 
         <div className={classes.wrapper}>    
-        <ResponsiveContainer width = "100%" height={250} >
+        <ResponsiveContainer width = "100%" height={350} >
             {props.graph}
         </ResponsiveContainer>
         </div>

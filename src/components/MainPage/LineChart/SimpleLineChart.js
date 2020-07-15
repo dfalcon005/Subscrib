@@ -6,7 +6,6 @@ import { Container } from 'react-bootstrap';
 
 import  {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
-
 export default class SimpleLineChart extends React.Component{
 	render (){
       const data = [
