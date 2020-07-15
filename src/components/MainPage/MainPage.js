@@ -11,20 +11,22 @@ import SubscriptionDetails from '../DetailPage/Modal/SubscriptionDetails/Subscri
 class mainpage extends Component{
     state = {
         subscriptions: [
-            { id: '1', name: 'Netflix', price: '$9.99/month', next_pay: '7/21'},
-            { id: '2', name: 'Spotify', price: '$5.99/month', next_pay: '7/25'},
-            { id: '3', name: 'Hulu', price: '$5.99/month', next_pay: '7/29'},
-            { id: '4', name: 'Disney+', price: '$9.99/month', next_pay: '7/31'},
-            { id: '5', name: 'Gym', price: '$35.99/month', next_pay: '8/21'},
-            { id: '6', name: 'Rent', price: '$150.99/month', next_pay: '8/21'},
+            { id: '1', name: 'Netflix', price: '$9.99/month', next_pay: '7/21', sub_type: 'Premium', year_amount: '$120.99'},
+            { id: '2', name: 'Spotify', price: '$5.99/month', next_pay: '7/25', sub_type: 'Premium', year_amount: '$120.99'},
+            { id: '3', name: 'Hulu', price: '$5.99/month', next_pay: '7/29', sub_type: 'Premium', year_amount: '$120.99'},
+            { id: '4', name: 'Disney+', price: '$9.99/month', next_pay: '7/31', sub_type: 'Premium', year_amount: '$120.99'},
+            { id: '5', name: 'Gym', price: '$35.99/month', next_pay: '8/21', sub_type: 'Premium', year_amount: '$120.99'},
+            { id: '6', name: 'Rent', price: '$150.99/month', next_pay: '8/21', sub_type: 'Premium', year_amount: '$120.99'},
           ],
           detailmode: false
     }
 
-    detailmodeHandler = () => {
+    // set detail mode true to show detailed view modal
+    detailmodeHandler = (sub) => {
         this.setState({detailmode: true});
     }
 
+    // set detail mode false to hide detailed view modal
     detailModeCancelHandler= () => {
         this.setState({detailmode: false})
     }
@@ -32,25 +34,29 @@ class mainpage extends Component{
     render(){
         return( 
             <div className="row">
+
                 {/* subscription list */}
                 <div className="col-sm-4" id="sub-list-section">
                     <h4>My Subscriptions:</h4>
                     <div className="scrollable-list">
                         {/* maps subscriptions to create a card for each */}
-                        {this.state.subscriptions.map((sub, index) => {
+                        {this.state.subscriptions.map((sub) => {
                             return <Subscription
                                 key={sub.id}
                                 name={sub.name}
                                 price={sub.price}
                                 next_pay={sub.next_pay}
-                                detailed={this.detailmodeHandler}/>
+                                detailed={this.detailmodeHandler.bind(this,sub)}/>
                         })}
                     </div>    
                     <AddButton/>
                 </div>
+
+                {/* detail view modal */}
                 <Modal show={this.state.detailmode} modalClosed={this.detailModeCancelHandler}>
                     <SubscriptionDetails/>
                 </Modal>
+
                 {/* line chart */}
                 <div className="col-sm-8" id = "linechart">
                     <div className="card">
