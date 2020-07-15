@@ -1,0 +1,14 @@
+.scrollable-list{
+    height: 65vh;
+    padding-right: 1vw;
+    padding-bottom: 1vh;
+    overflow-y: scroll;
+}
+
+#sub-list-section {
+    margin-top: 3rem;
+}
+
+#linechart {
+    margin: 3rem auto;
+}
