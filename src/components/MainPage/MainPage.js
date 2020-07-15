@@ -7,7 +7,6 @@ import Modal from '../../components/DetailPage/Modal/Modal';
 import SubscriptionDetails from '../DetailPage/Modal/SubscriptionDetails/SubscriptionDetails';
 
 
-
 class mainpage extends Component{
     state = {
         subscriptions: [
@@ -71,5 +70,6 @@ class mainpage extends Component{
         )
     }
 };
+
 
 export default mainpage;
