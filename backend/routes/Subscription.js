@@ -31,16 +31,23 @@ router.route('/delete/:id').delete((req, res) => {
 //works
 router.route('/update/:id').post((req, res) => {
     Subscription.findById(req.params.id)
-        .then(subscription => {
+        .then(async (subscription) => {
             subscription.name = req.body.name;
             subscription.category = req.body.category;
             subscription.date_purchased = Date.parse(req.body.date_purchased);
-            subscription.trial = req.body.trial;
+            subscription.sub_type = req.body.sub_type;
+            const check_trial_up = await ( () => {
+                if (subscription.sub_type === 'Trial' ) {
+                    subscription.trial_ending =  Date.parse(req.body.trial_ending);
+                }
+            });
             subscription.payment_type = req.body.payment_type;
             subscription.payment_freq = req.body.payment_freq;
             subscription.sub_payment = Number(req.body.sub_payment);
             subscription.auto_pay = req.body.auto_pay;
             subscription.annual_payment = 12 * req.body.sub_payment;
+
+            check_trial_up();
 
             subscription.save()
                 .then(() => res.json('Subscription Updated Successfully'))
@@ -49,27 +56,30 @@ router.route('/update/:id').post((req, res) => {
         .catch(err => res.status(400).json('[ERROR] ' + err));
 });
 //works
-router.route('/add').post((req, res) => {
+router.route('/add').post(async (req, res) => {
     const name = req.body.name;
     const category = req.body.category;
     const date_purchased = Date.parse(req.body.date_purchased);
-    const trial = req.body.trial;
+    const sub_type = req.body.sub_type;
+    let trial_ending = null;
+    const check_trial = await( () => {
+        if (sub_type === 'Trial' ) {
+            trial_ending =  Date.parse(req.body.trial_ending);
+        }
+    });
     const payment_type = req.body.payment_type;
     const payment_freq = req.body.payment_freq;
     const sub_payment = Number(req.body.sub_payment);
     const auto_pay = req.body.auto_pay;
     const annual_payment = 12 * req.body.sub_payment;
 
-    let trial_ending = null;
-    if (trial) {
-        trial_ending = Date.parse(req.body.trial_ending);
-    };
+    check_trial();
 
     const newSubscription = new Subscription({
         name,
         category,
         date_purchased,
-        trial,
+        sub_type,
         trial_ending,
         payment_type,
         payment_freq,
@@ -77,7 +87,6 @@ router.route('/add').post((req, res) => {
         auto_pay,
         annual_payment,
     });
-
     newSubscription.save()
         .then(() => res.json("New subscription added!"))
         .catch(err => res.status(400).json('[ERROR]' + err))

@@ -10,7 +10,7 @@ const subSchema = new Schema({
     },
     category: { type: String },
     date_purchased: { type: Date },
-    trial: { type: Boolean },
+    sub_type: { type: String },
     trial_ending: { type: Date },
     payment_type: { type: String },
     payment_freq: { type: String },
