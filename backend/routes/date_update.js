@@ -23,11 +23,6 @@ function updateNextPayment(Subscription) {
 
     return new_pay_date;
   }
-  
-  let sub = {
-      "date_purchased": new Date("December 30, 2019") 
-  }
-  date = updateNextPayment(sub);
-  console.log(date.toString());
+
 
   
