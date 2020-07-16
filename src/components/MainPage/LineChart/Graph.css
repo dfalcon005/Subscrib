@@ -1,0 +1,14 @@
+
+  .wrapper {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    box-shadow: 20px 8px 20px grey;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    border: 10px solid transparent;
+    display: block;
+    padding: 10px;
+    width: 600px;
+    height: 350px;
+    background-color: aliceblue;
+  }

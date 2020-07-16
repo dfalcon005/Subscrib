@@ -1,0 +1,8 @@
+.button-position{
+    padding-top: 2vh;
+}
+
+.circle-btn {
+    padding: .75rem;
+    border-radius: 50%;
+}
