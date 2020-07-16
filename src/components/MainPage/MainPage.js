@@ -5,6 +5,7 @@ import AddButton from '../Buttons/AddButton';
 import SimpleLineChart from './LineChart/SimpleLineChart';
 import Modal from '../../components/DetailPage/Modal/Modal';
 import SubscriptionDetails from '../DetailPage/Modal/SubscriptionDetails/SubscriptionDetails';
+import Chart from '../DetailPage/Modal/SubscriptionDetails/Chart';
 
 
 class mainpage extends Component{
@@ -53,7 +54,18 @@ class mainpage extends Component{
 
                 {/* detail view modal */}
                 <Modal show={this.state.detailmode} modalClosed={this.detailModeCancelHandler}>
-                    <SubscriptionDetails/>
+                    <div class="row">
+                        <div class="col-4">
+                            <SubscriptionDetails/>
+                        </div>
+                        <div class="col-4">
+                            <Chart />
+                        </div>
+                        <div class="col-4">
+                            <Chart name='Yearly'/>
+                        
+                        </div>  
+                    </div>
                 </Modal>
 
                 {/* line chart */}
