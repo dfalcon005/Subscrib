@@ -10,6 +10,7 @@ www.duzeapi.com/Subscription/update/665432098675243567 => POST
 www.duzeapi.com/Subscription/add => POST
 */
 //works
+
 router.route('/').get((req, res) => {
     Subscription.find()
         .then(subscriptions => res.json(subscriptions))
@@ -46,6 +47,7 @@ router.route('/update/:id').post((req, res) => {
             subscription.sub_payment = Number(req.body.sub_payment);
             subscription.auto_pay = req.body.auto_pay;
             subscription.annual_payment = 12 * req.body.sub_payment;
+            subscription.next_payment = req.body.next_payment;
 
             check_trial_up();
 
@@ -72,6 +74,7 @@ router.route('/add').post(async (req, res) => {
     const sub_payment = Number(req.body.sub_payment);
     const auto_pay = req.body.auto_pay;
     const annual_payment = 12 * req.body.sub_payment;
+    const next_payment = req.body.next_payment;
 
     check_trial();
 
@@ -86,6 +89,7 @@ router.route('/add').post(async (req, res) => {
         sub_payment,
         auto_pay,
         annual_payment,
+        next_payment
     });
     newSubscription.save()
         .then(() => res.json("New subscription added!"))
