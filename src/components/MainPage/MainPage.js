@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import './MainPage.css';
 import Subscription from './Subscription/Subscription';
 import AddButton from '../Buttons/AddButton';
@@ -10,15 +11,15 @@ import Chart from '../DetailPage/Modal/SubscriptionDetails/Chart';
 
 class mainpage extends Component{
     state = {
-        subscriptions: [
-            { id: '1', name: 'Netflix', price: '$9.99/month', next_pay: '7/21', sub_type: 'Premium', year_amount: '$120.99'},
-            { id: '2', name: 'Spotify', price: '$5.99/month', next_pay: '7/25', sub_type: 'Premium', year_amount: '$120.99'},
-            { id: '3', name: 'Hulu', price: '$5.99/month', next_pay: '7/29', sub_type: 'Premium', year_amount: '$120.99'},
-            { id: '4', name: 'Disney+', price: '$9.99/month', next_pay: '7/31', sub_type: 'Premium', year_amount: '$120.99'},
-            { id: '5', name: 'Gym', price: '$35.99/month', next_pay: '8/21', sub_type: 'Premium', year_amount: '$120.99'},
-            { id: '6', name: 'Rent', price: '$150.99/month', next_pay: '8/21', sub_type: 'Premium', year_amount: '$120.99'},
-          ],
+        subscriptions: [],
           detailmode: false
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:4000/Subscription')
+            .then(response => {
+                this.setState({subscriptions: response.data});
+            });
     }
 
     // set detail mode true to show detailed view modal
@@ -32,6 +33,17 @@ class mainpage extends Component{
     }
 
     render(){
+
+        const subscriptions = this.state.subscriptions.map((sub) => {
+            return <Subscription
+                key={sub._id}
+                name={sub.name}
+                sub_payment={sub.sub_payment}
+                payment_freq={sub.payment_freq}
+                next_pay={sub.next_pay}
+                detailed={this.detailmodeHandler}/>
+        })
+
         return( 
             <div className="row">
 
@@ -40,14 +52,7 @@ class mainpage extends Component{
                     <h4>My Subscriptions:</h4>
                     <div className="scrollable-list">
                         {/* maps subscriptions to create a card for each */}
-                        {this.state.subscriptions.map((sub) => {
-                            return <Subscription
-                                key={sub.id}
-                                name={sub.name}
-                                price={sub.price}
-                                next_pay={sub.next_pay}
-                                detailed={this.detailmodeHandler.bind(this,sub)}/>
-                        })}
+                        {subscriptions}
                     </div>    
                     <AddButton/>
                 </div>

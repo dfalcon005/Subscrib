@@ -10,7 +10,7 @@ const subscription = (props) => (
                 {/* div for top items */}
                 <div className="d-flex justify-content-between">
                     <h5>{props.name}</h5>
-                    <p className="informative-label">{props.price}</p>
+                    <p className="informative-label">${props.sub_payment}/{props.payment_freq}</p>
                 </div>
                 {/* next payment info */}
                 <p className="descriptive-label">Next payment:</p>
