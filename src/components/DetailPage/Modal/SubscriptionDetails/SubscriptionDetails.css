@@ -1,5 +1,7 @@
 .details-pane {
-  padding: 1vh 0 0 5vw;   
+  height: 76vh;
+  padding: 2vh 0 0 2vw;   
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
 }
 
 .ui.list{

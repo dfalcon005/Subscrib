@@ -8,8 +8,6 @@ import Header from './components/Header/Header';
 import Mainpage from './components/MainPage/MainPage';
 
 
-import SubscriptionsList from "./components/subscriptionsList.component";
-
 function App() {
   return (
     <Router>
@@ -17,7 +15,6 @@ function App() {
       <div className="container">
         <Mainpage/>
       </div>
-      <Route path="/view" component={SubscriptionsList} />
     </Router>
   );
 }
