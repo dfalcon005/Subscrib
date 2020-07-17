@@ -12,9 +12,11 @@ import Chart from '../DetailPage/Modal/SubscriptionDetails/Chart';
 class mainpage extends Component{
     state = {
         subscriptions: [],
-          detailmode: false
+        selectedSubscriptionId: null,
+        detailmode: false,
     }
 
+    // fetches subscriptions
     componentDidMount() {
         axios.get('http://localhost:4000/Subscription')
             .then(response => {
@@ -22,9 +24,12 @@ class mainpage extends Component{
             });
     }
 
+    // 
+
     // set detail mode true to show detailed view modal
-    detailmodeHandler = (sub) => {
+    subscriptionSelectedHandler = (id) => {
         this.setState({detailmode: true});
+        this.setState({selectedSubscriptionId: id})
     }
 
     // set detail mode false to hide detailed view modal
@@ -33,7 +38,7 @@ class mainpage extends Component{
     }
 
     render(){
-
+        {/* maps subscriptions to create a card for each */}
         const subscriptions = this.state.subscriptions.map((sub) => {
             return <Subscription
                 key={sub._id}
@@ -41,7 +46,7 @@ class mainpage extends Component{
                 sub_payment={sub.sub_payment}
                 payment_freq={sub.payment_freq}
                 next_pay={sub.next_pay}
-                detailed={this.detailmodeHandler}/>
+                clicked={() => this.subscriptionSelectedHandler(sub._id)}/>
         })
 
         return( 
@@ -51,22 +56,22 @@ class mainpage extends Component{
                 <div className="col-sm-4" id="sub-list-section">
                     <h4>My Subscriptions:</h4>
                     <div className="scrollable-list">
-                        {/* maps subscriptions to create a card for each */}
+                        {/* displays all subscriptions */}
                         {subscriptions}
                     </div>    
                     <AddButton/>
                 </div>
 
                 {/* detail view modal */}
-                <Modal show={this.state.detailmode} modalClosed={this.detailModeCancelHandler}>
-                    <div class="row">
-                        <div class="col-4">
-                            <SubscriptionDetails/>
+                <Modal id={this.state.selectedSubscriptionId} show={this.state.detailmode} modalClosed={this.detailModeCancelHandler}>
+                    <div className="row">
+                        <div className="col-4">
+                            <SubscriptionDetails id={this.state.selectedSubscriptionId}/>
                         </div>
-                        <div class="col-4">
+                        <div className="col-4">
                             <Chart />
                         </div>
-                        <div class="col-4">
+                        <div className="col-4">
                             <Chart name='Yearly'/>
                         
                         </div>  

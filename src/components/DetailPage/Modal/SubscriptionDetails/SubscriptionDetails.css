@@ -1,8 +1,11 @@
-#thelst {
-    padding-top: 50px;
-    padding-right: 30px;
-    padding-bottom: 50px;
-    padding-left: 80px;
-    
-  
-  }
+.details-pane {
+  padding: 1vh 0 0 5vw;   
+}
+
+.ui.list{
+  padding-top: 2vh;
+}
+
+.ui.list .item{
+  padding-top: 2vh;
+}

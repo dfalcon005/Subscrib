@@ -3,7 +3,7 @@ import './Subscription.css'
 
 const subscription = (props) => (
     <div>
-        <div className="subscription" onClick={props.detailed}>
+        <div className="subscription" onClick={props.clicked}>
             {/* card for subscription */}
             <div className="card custom-card">
 
@@ -14,7 +14,8 @@ const subscription = (props) => (
                 </div>
                 {/* next payment info */}
                 <p className="descriptive-label">Next payment:</p>
-                <p className="informative-label">{props.next_pay}</p>
+                {/* <p className="informative-label">{props.next_pay}</p> */}
+                <p className="informative-label">7/21</p>
             </div>
         </div>
     </div>
