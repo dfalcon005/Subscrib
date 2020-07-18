@@ -3,10 +3,13 @@ import './SubscriptionDetails.css';
 import axios from 'axios';
 
 class SubscriptionDetails extends Component {
+
+
     // holds single subscription
     state = {
-        subscription: null
+        subscription: null,
     }
+
 
     // fetches single subscription with id
     componentDidUpdate () {
@@ -25,7 +28,7 @@ class SubscriptionDetails extends Component {
         }
     }
 
-
+    //
     render() {
         // set subscription variable
         let subscription = <h5>Please select a subscription</h5>
@@ -66,6 +69,7 @@ class SubscriptionDetails extends Component {
             );
         }
         return subscription;
+        
     }
 }
 
