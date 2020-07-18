@@ -13,7 +13,7 @@ function updateNextPayment(Subscription) {
     } else {
         new_pay_date.setMonth(today.getMonth() + 1);
         new_pay_date.setDate(starting_date.getDate());
-        if (new_pay_date.getMonth() === 0) {
+        if (new_pay_date.getMonth() == 0) {
             new_pay_date.setYear(today.getFullYear() + 1);
         } else { new_pay_date.setYear(today.getFullYear()); }
     }
@@ -35,6 +35,7 @@ router.route('/find/:id').get((req, res) => {
         .then(subscription => res.json(subscription))
         .catch(err => res.status(400).json('[ERROR] ' + err));
 });
+
 
 router.route('/delete/:id').delete((req, res) => {
     Subscription.findByIdAndDelete(req.params.id)
