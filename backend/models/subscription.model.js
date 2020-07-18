@@ -16,7 +16,8 @@ const subSchema = new Schema({
     payment_freq: { type: String },
     sub_payment: { type: Number },
     auto_pay: { type: Boolean },
-    annual_payment: { type: Number }
+    annual_payment: { type: Number },
+    next_payment: { type: Date}
 }, {
     timestamps: true
 });
