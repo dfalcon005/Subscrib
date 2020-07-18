@@ -9,18 +9,19 @@ class SubscriptionDetails extends Component {
     }
 
     // fetches single subscription with id
-       componentDidUpdate () {
+    componentDidUpdate () {
+        // check to make sure the id prop has been passed
         if ( this.props.id ) {
-            if ( !this.state.subscription || (this.state.subscription && this.state.subscription.id !== this.props.id) ) {
+            // check if subscription is null OR subscription is true and the id is not the same as the id selected
+            if ( !this.state.subscription || (this.state.subscription && this.state.subscription._id !== this.props.id) ) {
                 axios.get( 'http://localhost:4000/Subscription/find/' + this.props.id )
                     .then( response => {
-                        // console.log(response);
                         this.setState( { subscription: response.data } );
                     })
                     .catch((err) =>
                         console.log(err)
                     );
-            }
+                }
         }
     }
 

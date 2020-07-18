@@ -24,8 +24,6 @@ class mainpage extends Component{
             });
     }
 
-    // 
-
     // set detail mode true to show detailed view modal
     subscriptionSelectedHandler = (id) => {
         this.setState({detailmode: true});
@@ -38,17 +36,6 @@ class mainpage extends Component{
     }
 
     render(){
-        {/* maps subscriptions to create a card for each */}
-        const subscriptions = this.state.subscriptions.map((sub) => {
-            return <Subscription
-                key={sub._id}
-                name={sub.name}
-                sub_payment={sub.sub_payment}
-                payment_freq={sub.payment_freq}
-                next_pay={sub.next_pay}
-                clicked={() => this.subscriptionSelectedHandler(sub._id)}/>
-        })
-
         return( 
             <div className="row">
 
@@ -57,7 +44,15 @@ class mainpage extends Component{
                     <h4>My Subscriptions:</h4>
                     <div className="scrollable-list">
                         {/* displays all subscriptions */}
-                        {subscriptions}
+                        {this.state.subscriptions.map((sub) => {
+                            return <Subscription
+                                key={sub._id}
+                                name={sub.name}
+                                sub_payment={sub.sub_payment}
+                                payment_freq={sub.payment_freq}
+                                next_pay={sub.next_pay}
+                                clicked={() => this.subscriptionSelectedHandler(sub._id)}/>
+                        })}
                     </div>    
                     <AddButton/>
                 </div>
