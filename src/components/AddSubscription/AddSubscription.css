@@ -1,0 +1,21 @@
+.newSub-form{
+    padding-top: 3vh;
+    width: 80%;
+    margin: auto;
+}
+
+.custom-input {
+    height: calc(1.5em + .75rem + 2px);
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    background-clip: padding-box;
+}
+
+.button-padding{
+    padding: 1vh 2vw 0 0;
+}
+
+.button-size{
+    height: calc(1.5em + .75rem + 2px);
+}
