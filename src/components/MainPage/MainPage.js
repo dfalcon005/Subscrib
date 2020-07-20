@@ -31,28 +31,34 @@ class mainpage extends Component{
     }
 
     // set detail mode false to hide detailed view modal
-    detailModeCancelHandler= () => {
+    detailModeCancelHandler = () => {
         this.setState({detailmode: false})
     }
 
     render(){
         return( 
             <div className="row">
-
                 {/* subscription list */}
                 <div className="col-sm-4" id="sub-list-section">
                     <h4>My Subscriptions:</h4>
                     <div className="scrollable-list">
                         {/* displays all subscriptions */}
-                        {this.state.subscriptions.map((sub) => {
-                            return <Subscription
-                                key={sub._id}
-                                name={sub.name}
-                                sub_payment={sub.sub_payment}
-                                payment_freq={sub.payment_freq}
-                                next_pay={sub.next_pay}
-                                clicked={() => this.subscriptionSelectedHandler(sub._id)}/>
-                        })}
+                        {this.state.subscriptions
+                            // sort by next payment date
+                            .sort((a, b) => {
+                                return a.next_payment > b.next_payment ? 1 : -1
+                            })
+                            .map((sub) => {
+                                return <Subscription
+                                    key={sub._id}
+                                    name={sub.name}
+                                    sub_payment={sub.sub_payment}
+                                    payment_freq={sub.payment_freq}
+                                    next_pay={sub.next_pay}
+                                    next_payment={sub.next_payment}
+                                    clicked={() => this.subscriptionSelectedHandler(sub._id)}/>
+                            })
+                        }
                     </div>    
                     <AddButton/>
                 </div>
@@ -79,7 +85,7 @@ class mainpage extends Component{
                     <div className="card-body">
                         <h3 className="card-title">You are currently spending <span className="informative-label">$9.99/month</span>...</h3>
                             {/* place line chart here */}
-                        <div><SimpleLineChart/></div>
+                        <SimpleLineChart/>
                         </div>
                     </div>
                     </div>
