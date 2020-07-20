@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './SubscriptionDetails.css';
 import axios from 'axios';
+import moment from 'moment';
 
 class SubscriptionDetails extends Component {
     // holds single subscription
@@ -46,8 +47,7 @@ class SubscriptionDetails extends Component {
                     <div className="ui list">
                         <div className="item">
                                 <h5 className="header"> Next Payment:</h5>
-                                {/* <p>{this.state.subscription.next_payment}</p> */}
-                                <p>7/21</p>
+                                <p>{moment(this.state.subscription.next_payment).format('MM/D')}</p>
                         </div>
                         <div className="item">
                                 <h5 className="header"> Amount per month:</h5>

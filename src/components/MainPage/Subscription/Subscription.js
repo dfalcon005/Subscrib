@@ -1,5 +1,6 @@
 import React from 'react';
-import './Subscription.css'
+import './Subscription.css';
+import moment from 'moment';
 
 const subscription = (props) => (
     <div>
@@ -14,8 +15,7 @@ const subscription = (props) => (
                 </div>
                 {/* next payment info */}
                 <p className="descriptive-label">Next payment:</p>
-                {/* <p className="informative-label">{props.next_pay}</p> */}
-                <p className="informative-label">7/21</p>
+                <p className="informative-label">{moment(props.next_payment).format('MM/D')}</p>
             </div>
         </div>
     </div>
