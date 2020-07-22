@@ -109,15 +109,15 @@ class addSubscription extends Component{
                         />
                     </div>
                     <div className="d-flex flex-row">
-                    <div className="button-padding">
-                        <input type="submit" label="Done" className="btn btn-dark done-button"/>
+                        <div className="button-padding">
+                            <input type="submit" label="Done" className="btn btn-dark done-button"/>
+                        </div>
+                        <div className="button-padding">
+                            <Link to="/">
+                                <Button label="Cancel" className="button"/>
+                            </Link>
+                        </div>
                     </div>
-                    <div className="button-padding">
-                        <Link to="/">
-                            <Button label="Cancel" className="button"/>
-                        </Link>
-                    </div>
-                </div>
                 </form>
             </div>
         )
