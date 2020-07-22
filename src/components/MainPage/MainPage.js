@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import './MainPage.css';
+import {Link} from 'react-router-dom';
 import Subscription from './Subscription/Subscription';
 import AddButton from '../Buttons/AddButton';
 import SimpleLineChart from './LineChart/SimpleLineChart';
@@ -60,7 +61,9 @@ class mainpage extends Component{
                             })
                         }
                     </div>    
-                    <AddButton/>
+                    <Link to="/newsubscription">
+                        <AddButton/>
+                    </Link>
                 </div>
 
                 {/* detail view modal */}

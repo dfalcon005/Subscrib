@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './components/Header/Header';
 import Mainpage from './components/MainPage/MainPage';
+import AddSubscription from './components/AddSubscription/AddSubscription';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
     <Router>
       <div><Header/></div>
       <div className="container">
-        <Mainpage/>
+        <Route path="/" exact component={Mainpage}/>
+        <Route path="/newsubscription" component={AddSubscription}/>
       </div>
     </Router>
   );
