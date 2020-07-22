@@ -41,6 +41,7 @@ class SubscriptionDetails extends Component {
         // renders the details of the single subscription
         if (this.state.subscription) {
             subscription = (
+                <div className="d-flex flex-row">
                 <div className="card details-pane">
                     <div>
                         <h2>{this.state.subscription.name}</h2>
@@ -65,6 +66,10 @@ class SubscriptionDetails extends Component {
                                 <p>{this.state.subscription.sub_type}</p>
                         </div>
                     </div>
+                </div>
+                <div className="card details-pane">
+                <simpleLineChart/>
+                </div>
                 </div>
             );
         }
